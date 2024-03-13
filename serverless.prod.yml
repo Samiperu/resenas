@@ -1,0 +1,19 @@
+#org: samishop
+#app: sls-api-production
+service: sls-api-resenas
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  #sruntime: nodejs14.x
+  region: us-east-2
+  stage: prod
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
+    environment:
+      MONGODB_URI:
